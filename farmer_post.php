@@ -5,7 +5,8 @@ $farmer_post = new FARMER();
 
  if(!$farmer_post->is_logged_in())
 {
- 	$farmer_post->redirect('index.php');
+ 	$_SESSION['redirect_url'] = $_SERVER['PHP_SELF']; 
+ 	$farmer_post->redirect('farmer_signin');
  }
 
 $stmt = $farmer_post->runQuery("SELECT * FROM tbl_farmers WHERE email=:email_id");
@@ -228,21 +229,21 @@ if($farmer_post->is_logged_in()) {
 							        
 							    </select>
 							</div>
-							<div class="form-group" data-example >
+							
 								<div class=" col-md-8 col-md-offset-2">
 									 <label class="login-field-icon fui-lock " for="login-pass">Location</label>
 								  <input type="text" name="location" class="placepicker form-control" value="" placeholder="Enter a Location" id="login-pass" required />
 								 
 								</div>
 
-							</div>
+						
 							<div class="form-group col-md-8 col-md-offset-2">
 
 							<label class="control-label">Product Img.</label>
        						 <input class="input-group form-control" type="file" name="photo" accept="image/*" required />
        						 </div>
 							<div class="form-group col-md-8 col-md-offset-2">
-							<input class="btn btn-primary  btn-block" value="Post Product" name="btn-post" type="submit"/><br>
+							<input class="btn btn-primary green  btn-block" value="Post Product" name="btn-post" type="submit"/><br>
 							
 							</div>
 				</form>

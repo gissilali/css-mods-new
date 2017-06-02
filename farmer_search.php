@@ -23,10 +23,11 @@ $pages = ceil($get_total_rows[0]/$item_per_page);
 
 $farmer_home = new FARMER();
 
-// if(!$farmer_home->is_logged_in())
-// {
-//  $farmer_home->redirect('index.php');
-// }
+if(!$farmer_home->is_logged_in())
+{
+ $_SESSION['redirect_url'] = $_SERVER['PHP_SELF']; 
+}
+
 if($farmer_home->is_logged_in()){
 $stmt = $farmer_home->runQuery("SELECT * FROM tbl_farmers WHERE email=:email_id");
 $stmt->execute(array(":email_id"=>$_SESSION['farmerSession']));

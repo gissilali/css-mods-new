@@ -6,7 +6,7 @@
 
 	if($farmer_signin->is_logged_in()!="")
 {
-	$farmer_signin->redirect('index.php');
+	$farmer_signin->redirect('index');
 }
 
 
@@ -22,8 +22,16 @@ if(isset($_POST['btn-login']))
 	
 	if($farmer_login->login($email,$upass))
 	{
-		$farmer_login->redirect('index.php');
+		if(isset($_SESSION['redirect_url'])){
+			$redirect_url = (isset($_SESSION['redirect_url'])) ? $_SESSION['redirect_url'] : '/';
+			unset($_SESSION['redirect_url']);
+			header("Location: $redirect_url", true, 303);
+		} else {
+		$farmer_login->redirect('index');
+		}
 	}
+
+	
 }
 ?>
 <!DOCTYPE html>

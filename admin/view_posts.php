@@ -50,10 +50,10 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
           </ul>
           <ul class="nav navbar-nav navbar-right">
          
-   <li class="dropdown">
+    <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 
-        <span class=""></span>&nbsp; <?php echo $row['email']; ?>&nbsp;<span class="caret"></span></a>
+        <span class=""></span>&nbsp; <b>ADMIN NO:<?php echo $row['ID']; ?></b> <?php echo $row['email']; ?>&nbsp;<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="logout"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign Out</a></li>
               </ul>
