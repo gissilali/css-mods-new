@@ -24,8 +24,11 @@ if($farmer_home_post->dbConnection())
 	}
 
 	$admin_home = new CONSULTANT();
+	
+	if(!$admin_home->is_logged_in())
 {
-	$admin_home->redirect('index');
+	$_SESSION['redirect_url'] = $_SERVER['PHP_SELF']; 
+	$admin_home->redirect('consultants');
 }
 
 	if($admin_home->is_logged_in()){

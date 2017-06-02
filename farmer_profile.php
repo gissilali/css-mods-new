@@ -5,7 +5,8 @@ $farmer_profile = new FARMER();
 
 if(!$farmer_profile->is_logged_in())
 {
-	$farmer_profile->redirect('index');
+	$_SESSION['redirect_url'] = $_SERVER['PHP_SELF']; 
+  $farmer_profile->redirect('farmer_signin');
 }
 
 $stmt = $farmer_profile->runQuery("SELECT * FROM tbl_farmers WHERE email=:email_id");

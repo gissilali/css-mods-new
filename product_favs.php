@@ -40,7 +40,8 @@ if($farmer_home_post->dbConnection())
 
 if(!$farmer_home->is_logged_in() AND !$admin_home->is_logged_in() )
 {
-	$farmer_home->redirect('index.php');
+	$_SESSION['redirect_url'] = $_SERVER['PHP_SELF']; 
+	$farmer_home->redirect('index');
 }
 
 ?>

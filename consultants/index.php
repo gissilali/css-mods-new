@@ -18,7 +18,14 @@ if(isset($_POST['btn-login']))
 	
 	if($consultant_login->login($email,$upass))
 	{
+		if(isset($_SESSION['redirect_url'])){
+			$redirect_url = (isset($_SESSION['redirect_url'])) ? $_SESSION['redirect_url'] : '/';
+			unset($_SESSION['redirect_url']);
+			header("Location: $redirect_url", true, 303);
+		} else {
 		$consultant_login->redirect('home');
+		}
+		
 	}
 }
 ?>
@@ -33,6 +40,7 @@ if(isset($_POST['btn-login']))
 		 <link href="../font/css/font-awesome.css" rel="stylesheet" />
 		<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
 		 <!-- <link rel="shortcut icon" href="images/asawa.jpg"> -->
+		 <link rel="stylesheet" href="../css/materialize/css/materialize.min.css">
 	
 		<title>Consultant | Login</title>
 	</head>

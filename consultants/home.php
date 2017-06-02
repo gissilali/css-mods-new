@@ -5,7 +5,8 @@ $consult_home = new CONSULTANT();
 
 if(!$consult_home->is_logged_in())
 {
-	$consult_home->redirect('index.php');
+	$_SESSION['redirect_url'] = $_SERVER['PHP_SELF']; 
+  $consult_home->redirect('index');
 }
 
 $stmt = $consult_home->runQuery("SELECT * FROM tbl_consultants WHERE email=:email_id");
@@ -98,6 +99,7 @@ if(isset($_POST['btn-post']))
 		<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
 		 <!-- <link rel="shortcut icon" href="images/asawa.jpg"> -->
      <script src="https://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+      <link rel="stylesheet" href="../css/materialize/css/materialize.min.css">
 	
 		<title>Consultant | Post</title>
 	</head>
