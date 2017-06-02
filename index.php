@@ -57,6 +57,8 @@ if($farmer_home_post->dbConnection())
 		 <link href="font/css/font-awesome.css" rel="stylesheet" />
 		<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
 		 <!-- <link rel="shortcut icon" href="images/asawa.jpg"> -->
+
+		 <link rel="manifest" href="manifest.json" />
 	
 		<title>Farmer | Home</title>
   
