@@ -43,7 +43,7 @@ class paginate
 				 header("Location: blog.php?more");
 			}  -->
 
-              <div class="col-md-12  col-xs-12 col-sm-12 row-eq-height  card"  id="mauni">
+              <div class="col-md-12  col-xs-12 col-sm-12 row-eq-height __card"  id="mauni">
                 <div class="col-md-3 col-sm-3">
                 <?php if ( $row['photo']==''){
                  echo ""; 

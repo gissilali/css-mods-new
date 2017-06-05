@@ -4,8 +4,8 @@ class Database
      
     private $host = "localhost";
     private $db_name = "farm";
-    private $username = "root";
-    private $password = "";
+    private $username = "phpmyadmin";
+    private $password = "mysql";
     public $conn;
      
     public function dbConnection()

@@ -198,7 +198,20 @@ footer .col-md-12{
 .__author-card .itemed{
   text-transform: capitalize;
 }
-
+.__form-button{
+  float: right;
+}
+.__form-input input{
+  /*width:100%;*/
+  border-radius:3px 0 0 3px;
+  min-width:232px;
+}
+.__form-input{
+  float: right;
+}
+.__form-button button{
+  border-radius: 0px 3px 3px 0px;
+}
 
 
 

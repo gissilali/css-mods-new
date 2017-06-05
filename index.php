@@ -161,22 +161,24 @@ if($admin_home->is_logged_in() ) {
 	</div>
 	<div class="clearfix"></div>
    <div class="row">
-   		<div class="navbar navbar-inverse __search-margin-top">
+   		<div class="container">
+   			<div class="navbar navbar-inverse __search-margin-top">
         
-          <div class="nav navbar-nav navbar-right">
-               <form action="" method="post">
-               		<ul>
-                    	<li>  <input type="text" class="form-control " name="search" placeholder="Search Products " id="country_id" onkeyup="autocomplet()"/></li>
-                     
-                     	<li> <button name="btn-search" class=" btn btn-success" type="submit"><i class="fa fa-search"></i></button></li>
-                    </ul>
-                </form>
-            </div>
-          
+               		<form action="" method="post">
+						<div class="__form-button">
+	                     	<button name="btn-search" class=" btn btn-success" type="submit"><i class="fa fa-search"></i></button>
+						</div>
+						<div class="__form-input">
+	                    	 <input type="text" class="form-control" name="search" placeholder="Search Products " id="country_id" onkeyup="autocomplet()"/> 
+						</div>
+              		</form>          
     </div>
+   		</div>
    </div>
     <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2 pull-right "  id="sercher-view">
-    	<ul id="country_list_id" class="card dropdown-menu "></ul>
+    	<ul id="country_list_id" class="card dropdown-menu " style="display: block;
+margin-right: 142px;
+width: 232px;"></ul>
     </div>
 
     <section>
@@ -270,14 +272,20 @@ if($admin_home->is_logged_in() ) {
         </div>
     </section>
     <div class="clearfix"></div>
-	<footer>
+	 <footer class="clearfix row">
 			<div class="col-md-12">
-				<div class="col-md-6 col-md-offset-3 text-center">
-					<p>&copy; &nbsp;<?php echo date('Y'); ?> &nbsp;All Rights Reserved </p>
+				<div class="container">
+					<div class="col-md-4">
+					<nav class="__social-media-links">
+						<a href=""><i class="fa fa-facebook"></i></a>
+						<a href=""><i class="fa fa-twitter"></i></a>
+						<a href=""><i class="fa fa-instagram"></i></a>
+					</nav>
 				</div>
-				
+				<p style="float: right">&copy; &nbsp;<?php echo date('Y'); ?> &nbsp;All Rights Reserved </p>
+				</div>
 			</div>
-		</footer>
+		</footer>s
 	</body>
 	 <script type="text/javascript" src="js/jquery2.js"></script>
     <script type="text/javascript" src="js/notifications.js"> </script>

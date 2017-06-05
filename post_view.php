@@ -61,7 +61,7 @@ if($farmer_home_post->dbConnection())
 		 <link href="font/css/font-awesome.css" rel="stylesheet" />
 		<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
 		 <!-- <link rel="shortcut icon" href="images/asawa.jpg"> -->
-		 <link rel="stylesheet" href="css/material-inputs.css">
+		 <!-- <link rel="stylesheet" href="css/material-inputs.css"> -->
 	
 		<title>Farmer | Home</title>
 		<script type="text/javascript" src="js/jquery2.js"></script>
@@ -75,9 +75,9 @@ if($farmer_home_post->dbConnection())
 					data:'id='+id,
 					success:function(msg){
 						if(msg == 'fav'){
-							 $(element).closest('.faver').removeClass('btn-default').addClass('btn-primary');
+							 $('.faver').removeClass('btn-default').addClass('btn-warning');
 						}else{
-							 $(element).closest('.faver').removeClass('btn-primary').addClass('btn-default');
+							 $('.faver').removeClass('btn-warning').addClass('btn-default');
 						}
 					}
 				});
@@ -190,25 +190,29 @@ if($admin_home->is_logged_in() ) {
       header("Location: farmer_search.php?search=$item ");
     }
    ?>
-    <div class="navbar navbar-inverse">
+    <div class="row">
+   		<div class="container">
+   			<div class="navbar navbar-inverse __search-margin-top">
         
-          <div class="nav navbar-nav navbar-right">
-               <form action="" method="post">
-               		<ul>
-                    	<li>  <input type="text" class="form-control " name="search" placeholder="Search Products " id="country_id" onkeyup="autocomplet()"/></li>
-                     
-                     	<li> <button name="btn-search" class=" btn btn-success" type="submit"><i class="fa fa-search"></i></button></li>
-                    </ul>
-                </form>
-            </div>
-          
+               		<form action="" method="post">
+						<div class="__form-button">
+	                     	<button name="btn-search" class=" btn btn-success" type="submit"><i class="fa fa-search"></i></button>
+						</div>
+						<div class="__form-input">
+	                    	 <input type="text" class="form-control" name="search" placeholder="Search Products " id="country_id" onkeyup="autocomplet()"/> 
+						</div>
+              		</form>          
     </div>
+   		</div>
+   </div>
     <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2 pull-right "  id="sercher-view">
-    	<ul id="country_list_id" class="card dropdown-menu "></ul>
+    	<ul id="country_list_id" class="card dropdown-menu " style="display: block;
+margin-right: 142px;
+width: 232px;"></ul>
     </div>
 
       
-    <section>
+    <section style="padding-top:50px">
     <div class="container" id="panel_post">
     	 
 					<div class="container">
