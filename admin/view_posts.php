@@ -45,6 +45,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
           <ul class="nav navbar-nav">
             <li ><a href="home">Home</a></li>
             <li class="active"><a href="view_posts">Viw Products</a></li>
+            <li><a href="view_blog">View Blog Posts</a></li>
             <!-- <li><a href="#">Tenders</a></li> -->
             <!-- <li><a href="about">About Farmbase</a></li> -->
           </ul>
@@ -166,13 +167,11 @@ function loadtable() { var tabler = $('#table_view').dataTable( {
 </script>
 
  <h4><a href="home">Back to Panel</a></h4>
- <footer>
-      <div class="col-md-12">
-        <div class="col-md-6 col-md-offset-3 text-center">
-          <p>&copy; &nbsp;<?php echo date('Y'); ?> &nbsp;All Rights Reserved </p>
-        </div>
-        
-      </div>
-    </footer>
+ <?php 
+
+  //footer
+  include '../footer.php';
+
+  ?>
 </body>
 </html>

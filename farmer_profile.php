@@ -232,20 +232,12 @@ if($farmer_profile->is_logged_in()) {
 
 
 
-<footer class="clearfix row">
-      <div class="col-md-12">
-        <div class="container">
-          <div class="col-md-4">
-          <nav class="__social-media-links">
-            <a href=""><i class="fa fa-facebook"></i></a>
-            <a href=""><i class="fa fa-twitter"></i></a>
-            <a href=""><i class="fa fa-instagram"></i></a>
-          </nav>
-        </div>
-        <p style="float: right">&copy; &nbsp;<?php echo date('Y'); ?> &nbsp;All Rights Reserved </p>
-        </div>
-      </div>
-    </footer>
+<?php 
+
+  //footer
+  include 'footer.php';
+
+  ?>
   </body>
   <script type="text/javascript" src="js/jquery2.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>

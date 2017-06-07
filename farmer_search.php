@@ -69,6 +69,7 @@ if($farmer_home_post->dbConnection())
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
      <link href="font/css/font-awesome.css" rel="stylesheet" />
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/material-inputs.css">
      <!-- <link rel="shortcut icon" href="images/asawa.jpg"> -->
   
     <title>Farmer | Home</title>
@@ -174,21 +175,29 @@ if($admin_home->is_logged_in() ) {
       header("Location: farmer_search.php?search=$item ");
     }
    ?>
-    <div class="navbar navbar-inverse">
-        
-          <div class="nav navbar-nav navbar-right">
-               <form action="" method="post">
-                  <ul>
-                      <li>  <input type="text" class="form-control " name="search" placeholder="Search Products " id="country_id" onkeyup="autocomplet()"/></li>
-                     
-                      <li> <button name="btn-search" class=" btn btn-success" type="submit"><i class="fa fa-search"></i></button></li>
-                    </ul>
-                </form>
-            </div>
-          
+   <div class="container">
+    <div class="row">
+        <div class="navbar navbar-inverse">
+            
+              <div class="nav navbar-nav navbar-right">
+                   <form action="" method="post">
+                <div class="__form-button">
+                            <button name="btn-search" class=" btn btn-success" type="submit"><i class="fa fa-search"></i></button>
+                </div>
+                <div class="__form-input">
+                             <input type="text" class="form-control" name="search" placeholder="Search Products " id="country_id" onkeyup="autocomplet()"  /> 
+                </div>
+                      </form>   
+                </div>
+              
+        </div>
+      </div>
     </div>
-    <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2 pull-right "  id="sercher-view">
-      <ul id="country_list_id" class="card dropdown-menu "></ul>
+    <div class="clearfix"></div>
+   <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2 pull-right "  id="sercher-view">
+      <ul id="country_list_id" class="card dropdown-menu " style="display:hidden;
+      margin-right: 142px;
+      width: 232px;"></ul>
     </div>
 
     <div class="container" id="search_view">
@@ -196,14 +205,12 @@ if($admin_home->is_logged_in() ) {
 
     </div>
     <div class=" col-md-6 col-md-offset-3 paging_link"></div>
-<footer>
-      <div class="col-md-12">
-        <div class="col-md-6 col-md-offset-3 text-center">
-          <p>&copy; &nbsp;<?php echo date('Y'); ?> &nbsp;All Rights Reserved </p>
-        </div>
-        
-      </div>
-    </footer>
+<?php 
+
+  //footer
+  include 'footer.php';
+
+  ?>
   </body>
    <script type="text/javascript" src="js/jquery2.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>

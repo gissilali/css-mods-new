@@ -63,10 +63,10 @@ if ($row['photo']=="") {
 
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="index">Home</a></li>
+            <li><a href="index">Home</a></li>
             <li><a href="blog">Blog</a></li>
             <!-- <li><a href="#">Tenders</a></li> -->
-            <li><a href="about">About Farmbase</a></li>
+            <li class="active"><a href="about">About Farmbase</a></li>
           </ul>
           	
           <ul class="nav navbar-nav navbar-right">
@@ -209,20 +209,13 @@ if($admin_about->is_logged_in() ) {
 
 			</div>
 		</div><br><br>
-		 <footer class="clearfix row">
-			<div class="col-md-12">
-				<div class="container">
-					<div class="col-md-4">
-					<nav class="__social-media-links">
-						<a href=""><i class="fa fa-facebook"></i></a>
-						<a href=""><i class="fa fa-twitter"></i></a>
-						<a href=""><i class="fa fa-instagram"></i></a>
-					</nav>
-				</div>
-				<p style="float: right">&copy; &nbsp;<?php echo date('Y'); ?> &nbsp;All Rights Reserved </p>
-				</div>
-			</div>
-		</footer>
+		
+		<?php 
+
+	//footer
+	include 'footer.php';
+
+	?>
 
 
 

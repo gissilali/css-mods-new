@@ -61,7 +61,7 @@ if($farmer_home_post->dbConnection())
 		 <link href="font/css/font-awesome.css" rel="stylesheet" />
 		<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
 		 <!-- <link rel="shortcut icon" href="images/asawa.jpg"> -->
-		 <!-- <link rel="stylesheet" href="css/material-inputs.css"> -->
+		 <link rel="stylesheet" href="css/material-inputs.css">
 	
 		<title>Farmer | Home</title>
 		<script type="text/javascript" src="js/jquery2.js"></script>
@@ -83,6 +83,23 @@ if($farmer_home_post->dbConnection())
 				});
 				return false;
 			}
+		</script>
+		<!-- favourite colouring -->
+		<?php
+			$stmt = $farmer_home->runQuery("SELECT * FROM product_fav WHERE postID=:email_id AND email='$row[email]'");
+			$stmt->execute(array(":email_id"=>$message['ID']));
+			$list = $stmt->fetch(PDO::FETCH_ASSOC);
+		?>
+ 		<script type="text/javascript">
+ 			$('document').ready(function()	{ 	
+				if (<?php echo $list['favourite']; ?>==1) {
+										
+				 $('.faver').removeClass('btn-default').addClass('btn-warning');
+				}else{
+				 $('.faver').removeClass('btn-warning').addClass('btn-default');
+				}
+					});
+		
 		</script>
 		
 <style type="text/css">
@@ -206,7 +223,7 @@ if($admin_home->is_logged_in() ) {
    		</div>
    </div>
     <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2 pull-right "  id="sercher-view">
-    	<ul id="country_list_id" class="card dropdown-menu " style="display: block;
+    	<ul id="country_list_id" class="card dropdown-menu " style="display: hidden;
 margin-right: 142px;
 width: 232px;"></ul>
     </div>
@@ -258,13 +275,18 @@ width: 232px;"></ul>
 										$diff = round($diff);
 										echo $diff . " " . $strTime[$i] . "(s) ago ";
 								   } ?></span>
+								    <div style="float: right;">
 					              <?php if($farmer_home->is_logged_in() OR $admin_home->is_logged_in() )  {
- 								?>
-					                <div style="float: right;">
+					              	?>
 									  <button name="btn-fav"  class="btn faver btn-default btn-sm" onClick="cwRating(<?php echo $message['ID']; ?>)" type="submit" value="<?php echo $message['ID']; ?>"><span>Favourite&nbsp;</span><i class="glyphicon glyphicon-star"></i>&nbsp;&nbsp;</button>
-									 <!--  <span>Comment&nbsp;</span><i class="glyphicon glyphicon-comment"></i><br> -->
-									</div>
 							<?php } ?>
+				<?php
+				$stmt2 = $farmer_home->runQuery("SELECT * FROM product_fav WHERE favourite = '1' AND postID = '$message[ID]' ");
+				$stmt2->execute();
+				$blog_likes = $stmt2->rowCount();
+				?>						
+											<span class="itemed h4 " style="font-style: italic;"><?php echo $blog_likes; ?>Likes</span>
+									</div>
 								</div>
 								<!-- Card class inaudhi -->
 								<div class="col-md-4">
@@ -314,7 +336,7 @@ width: 232px;"></ul>
 						<div class="col-md-12  row-eq-height">
 						<h2 class="h2 also-like">You may also like;</h2>
 		                   <?php 
-		                    $query = "SELECT * FROM farmer_posts WHERE cartegory = '$message[cartegory]' ORDER BY id DESC";       
+		                    $query = "SELECT * FROM farmer_posts WHERE cartegory = '$message[cartegory]' AND (hidden ='' OR hidden = 0) ORDER BY timer DESC";       
 		                    $records_per_page=8;
 		                    $newquery = $paginate->paging($query,$records_per_page);
 		                    $paginate->dataview($newquery);
@@ -331,14 +353,12 @@ width: 232px;"></ul>
             </div>
            
     </section>
-	<footer>
-			<div class="col-md-12">
-				<div class="col-md-6 col-md-offset-3 text-center">
-					<p>&copy; &nbsp;<?php echo date('Y'); ?> &nbsp;All Rights Reserved </p>
-				</div>
-				
-			</div>
-		</footer>
+	<?php 
+
+	//footer
+	include 'footer.php';
+
+	?>
 	</body>
 
 

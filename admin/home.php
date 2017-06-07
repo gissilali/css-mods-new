@@ -48,7 +48,8 @@ include 'register.php';
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="home">Home</a></li>
-            <li><a href="view_posts">Viw Products</a></li>
+            <li><a href="view_posts">View Products</a></li>
+             <li><a href="view_blog">View Blog Posts</a></li>
             <!-- <li><a href="#">Tenders</a></li> -->
             <!-- <li><a href="about">About Farmbase</a></li> -->
           </ul>
@@ -202,6 +203,12 @@ include 'register.php';
   </section>
 
 </section>
+<?php 
+
+  //footer
+  include '../footer.php';
+
+  ?>
 </body>
     <script type="text/javascript" src="../js/jquery2.js"></script>
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>

@@ -173,7 +173,7 @@ if($admin_home->is_logged_in() ) {
 				  		
 				  		<div class="col-md-12  row-eq-height">
 		                   <?php 
-		                    $query = "SELECT * FROM message_posts WHERE cartegory = 'Feeds, Suppliments and Seeds' ORDER BY id DESC";       
+		                    $query = "SELECT * FROM message_posts WHERE cartegory = 'Feeds, Suppliments and Seeds' ORDER BY timer DESC";       
 		                    $records_per_page=6;
 		                    $newquery = $paginate->paging($query,$records_per_page);
 		                    $paginate->dataview($newquery);
@@ -193,7 +193,7 @@ if($admin_home->is_logged_in() ) {
 							
 						<div class="col-md-12 row-eq-height">
 		                   <?php 
-		                    $query = "SELECT * FROM message_posts WHERE cartegory = 'Farm Machinery and Tools' ORDER BY id DESC";       
+		                    $query = "SELECT * FROM message_posts WHERE cartegory = 'Farm Machinery and Tools' ORDER BY timer DESC";       
 		                    $records_per_page=6;
 		                    $newquery = $paginate->paging($query,$records_per_page);
 		                    $paginate->dataview($newquery);
@@ -211,7 +211,7 @@ if($admin_home->is_logged_in() ) {
                   <div class="tab-pane fade " id="livestock">
 						<div class="col-md-12 row-eq-height">
 		                   <?php 
-		                    $query = "SELECT * FROM message_posts WHERE cartegory = 'Livestock, Poultry and Fish' ORDER BY id DESC";       
+		                    $query = "SELECT * FROM message_posts WHERE cartegory = 'Livestock, Poultry and Fish' ORDER BY timer DESC";       
 		                    $records_per_page=6;
 		                    $newquery = $paginate->paging($query,$records_per_page);
 		                    $paginate->dataview($newquery);
@@ -229,7 +229,7 @@ if($admin_home->is_logged_in() ) {
                   <div class="tab-pane fade " id="farm">
 						<div class="col-md-12 row-eq-height">
 		                   <?php 
-		                    $query = "SELECT * FROM message_posts WHERE cartegory = 'Farm Produce' ORDER BY id DESC";       
+		                    $query = "SELECT * FROM message_posts WHERE cartegory = 'Farm Produce' ORDER BY timer DESC";       
 		                    $records_per_page=6;
 		                    $newquery = $paginate->paging($query,$records_per_page);
 		                    $paginate->dataview($newquery);
@@ -249,21 +249,77 @@ if($admin_home->is_logged_in() ) {
             </div>
            </div>
         </div>
-        <footer class="clearfix row">
-			<div class="col-md-12">
-				<div class="container">
-					<div class="col-md-4">
-					<nav class="__social-media-links">
-						<a href=""><i class="fa fa-facebook"></i></a>
-						<a href=""><i class="fa fa-twitter"></i></a>
-						<a href=""><i class="fa fa-instagram"></i></a>
-					</nav>
-				</div>
-				<p style="float: right">&copy; &nbsp;<?php echo date('Y'); ?> &nbsp;All Rights Reserved </p>
-				</div>
-			</div>
-		</footer>
+
+       
     </section>
+     <div class="clearfix"></div>
+    <section>
+			<div class="container" id="register">
+			  <div class="row">
+				<div class="col-lg-3 col-md-3 col-sm-3">
+				  <div class="single-footer-widget">
+					<div class="section-heading">
+					<h2 class="reg">Register</h2>
+					<div class="line"></div>
+				  </div>           
+				  <p>In order for the Presbyterian Weavers members to access their accounts for the first time,follow the following simple steps. In case of any problems,our support team is always ready to help</p>
+				  </div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-3">
+				  <div class="single-footer-widget">
+					<div class="section-heading">
+					<h2 class="reg">How to Register</h2>
+					<div class="line"></div>
+				  </div>
+				  <ul class="footer-service">
+					<li><span class="fa fa-check"></span>Enter your Email address</li>
+					<li><span class="fa fa-check"></span>Enter default password</li>
+					<li><span class="fa fa-check"></span>Go to Change Password</li>
+					<li><span class="fa fa-check"></span>Choose Passsword of Your Choice </li>
+					<li><span class="fa fa-check"></span>Enjoy our services</li>
+				  </ul>
+				  </div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-3">
+				  <div class="single-footer-widget">
+					<div class="section-heading">
+					<h2 class="reg">Tags</h2>
+					<div class="line"></div>
+				  </div>
+					<ul class="tag-nav">
+					  <li><a href="home">Our Page</a></li>
+					  <li><a href="php/logpage">Login</a></li>
+					  <li><a href="about">Presbyterian Weavers</a></li>
+					  <li><a href="https://www.facebook.com/Presbyterian-Weavers-of-Kenya-377229792412452/?hc_ref=SEARCH" target="_blank">FB</a></li>
+					  <li><a href="presb.pdf" target="_blank">Constitution </a></li>
+					  <li><a href="contact">Contact</a></li>
+					</ul>
+				  </div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-3">
+				  <div class="single-footer-widget">
+					<div class="section-heading">
+					<h2 class="reg">Contact Info</h2>
+					<div class="line"></div>
+				  </div>
+				  <p>For more information about us you can get in touch with us.</p>
+				  <address class="contact-info">
+					<p><span class="fa fa-home"></span>P.O Box, 
+					30784-00100, Nairobi</p>
+					<p><span class="fa fa-phone"></span>+254728700535,+254716590576</p>
+					<p><span class="fa fa-envelope"></span>info@presbyterianweavers.co.ke</p>
+				  </address>
+				  </div>
+				</div>
+			 </div>
+			</div>
+		</section>
+		 <?php 
+
+	//footer
+	include 'footer.php';
+
+	?>	
 	</body>
 	<script type="text/javascript" src="js/jquery2.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>

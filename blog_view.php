@@ -92,18 +92,32 @@ function cwRating(id){
 		data:'id='+id,
 		success:function(msg){
 			if(msg == 'fav'){
-				 $(element).closest('.faver').removeClass('btn-default').addClass('btn-primary');
+				 $('.faver').removeClass('btn-default').addClass('btn-primary');
 			}else{
-				 $(element).closest('.faver').removeClass('btn-primary').addClass('btn-default');
+				 $('.faver').removeClass('btn-primary').addClass('btn-default');
 			}
 		}
 	});
 	return false;
 }
-
-
-
 </script>
+<!-- favourite colouring -->
+		<?php
+			$stmt = $farmer_home->runQuery("SELECT * FROM message_fav WHERE postID=:email_id AND email='$row[email]'");
+			$stmt->execute(array(":email_id"=>$message['ID']));
+			$list = $stmt->fetch(PDO::FETCH_ASSOC);
+		?>
+ 		<script type="text/javascript">
+ 			$('document').ready(function()	{ 	
+				if (<?php echo $list['favourite']; ?>==1) {
+										
+				 $('.faver').removeClass('btn-default').addClass('btn-primary');
+				}else{
+				 $('.faver').removeClass('btn-primary').addClass('btn-default');
+				}
+					});
+		
+		</script>
 
 
 	</head>
@@ -297,18 +311,20 @@ if($admin_home->is_logged_in() ) {
 					                 <span class="phoned"><span class=""> By:&nbsp; </span><b><?php echo $message['email']; ?></b>&nbsp;&nbsp;&nbsp;</span>
 					                   <span  class="priced btn btn-default btn-xs"> <?php echo $message['phone']; ?></span>&nbsp;&nbsp;&nbsp;
 					                   <span  class="priced btn btn-default btn-xs hidden-sm hidden-md hidden-lg"> Message</span>&nbsp;&nbsp;&nbsp;
+
+					                    <div style="float: right;">
 					               <?php if($farmer_home->is_logged_in() OR $admin_home->is_logged_in() )  {
  								?>
-					                <div style="float: right;">
-					                	<!-- <form method="post" id="btn-message"> -->
-
 										  <button name="btn-fav"  class="btn faver btn-default btn-sm" onClick="cwRating(<?php echo $message['ID']; ?>)" type="submit" value="<?php echo $message['ID']; ?>"><span>Favourite&nbsp;</span><i class="glyphicon glyphicon-star"></i>&nbsp;&nbsp;</button>
-										 <button name="btn-like" class="btn btn-default btn-sm" type="submit" value="<?php echo $message['ID']; ?>"> <span>Like&nbsp;</span><i class="glyphicon glyphicon-thumbs-up"></i>&nbsp;&nbsp;</button>
-											<!-- <button name="btn-dis" class="btn btn-default btn-sm" type="submit" value="<?php //echo $message['ID']; ?>">< --><!-- span>Dislike&nbsp;</span><i class="glyphicon glyphicon-thumbs-down"></i>&nbsp;&nbsp;</button> -->
-										 <!--  <span>Comment&nbsp;</span><i class="glyphicon glyphicon-comment"></i><br>  -->
-										 <!-- </form> -->
-									</div>
 								<?php } ?>
+				<?php
+				$stmt2 = $farmer_home->runQuery("SELECT * FROM message_fav WHERE favourite = '1' AND postID = '$message[ID]' ");
+				$stmt2->execute();
+				$blog_likes = $stmt2->rowCount();
+				?>
+											<span class="itemed h4 " style="font-style: italic;"><?php echo $blog_likes; ?>Likes</span>
+										</div>
+				
 			               		</div>
 			               </div>
 			               <!--   php comments removed -->
@@ -337,7 +353,7 @@ if($admin_home->is_logged_in() ) {
 				  		<div class="col-md-12  row-eq-height">
 				  		<h2 class="h2">You may also like;</h2>
 		                   <?php 
-		                    $query = "SELECT * FROM message_posts WHERE cartegory = '$message[cartegory]' ORDER BY id DESC";       
+		                    $query = "SELECT * FROM message_posts WHERE cartegory = '$message[cartegory]' ORDER BY timer DESC";       
 		                    $records_per_page=2;
 		                    $newquery = $paginate->paging($query,$records_per_page);
 		                    $paginate->dataview($newquery);
@@ -360,14 +376,12 @@ if($admin_home->is_logged_in() ) {
            </div>
         </div>
     </section>
-	<footer>
-			<div class="col-md-12">
-				<div class="col-md-6 col-md-offset-3 text-center">
-					<p>&copy; &nbsp;<?php echo date('Y'); ?> &nbsp;All Rights Reserved </p>
-				</div>
-				
-			</div>
-		</footer>
+	<?php 
+
+	//footer
+	include 'footer.php';
+
+	?>
 	</body>
 
 

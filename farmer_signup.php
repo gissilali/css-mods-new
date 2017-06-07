@@ -87,14 +87,12 @@ if($farmer_signup->is_logged_in())
 			</div>
 		</div>
 	</section>
-	<footer>
-			<div class="col-md-12">
-				<div class="col-md-6 col-md-offset-3 text-center">
-					<p>&copy; &nbsp;<?php echo date('Y'); ?> &nbsp;All Rights Reserved </p>
-				</div>
-				
-			</div>
-		</footer>
+	<?php 
+
+	//footer
+	include 'footer.php';
+
+	?>
 	</body>
 	<script type="text/javascript" src="js/jquery2.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>

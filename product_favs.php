@@ -179,7 +179,7 @@ if($admin_home->is_logged_in() ) {
 							$stmt->execute(array(":email_id"=>$row['email']));
 							while($list = $stmt->fetch(PDO::FETCH_ASSOC)){
 
-		                    $query = "SELECT * FROM farmer_posts WHERE ID = '$list[postID]' ORDER BY id DESC";       
+		                    $query = "SELECT * FROM farmer_posts WHERE ID = '$list[postID]' ORDER BY timer DESC";       
 		                    $records_per_page=6;
 		                    $newquery = $paginate->paging($query,$records_per_page);
 		                    $paginate->dataview($newquery);
@@ -205,20 +205,12 @@ if($admin_home->is_logged_in() ) {
            </div>
         </div>
     </section>
-	<footer class="clearfix row">
-			<div class="col-md-12">
-				<div class="container">
-					<div class="col-md-4">
-					<nav class="__social-media-links">
-						<a href=""><i class="fa fa-facebook"></i></a>
-						<a href=""><i class="fa fa-twitter"></i></a>
-						<a href=""><i class="fa fa-instagram"></i></a>
-					</nav>
-				</div>
-				<p style="float: right">&copy; &nbsp;<?php echo date('Y'); ?> &nbsp;All Rights Reserved </p>
-				</div>
-			</div>
-		</footer>
+	<?php 
+
+	//footer
+	include 'footer.php';
+
+	?>
 	</body>
 	<script type="text/javascript" src="js/jquery2.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>

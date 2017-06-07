@@ -30,6 +30,7 @@ if(isset($_POST['btn-post']))
 	$phone = $row['phone'];
 	$email = $row['name'];
 	$piced = $row['photo'];
+	$userID = $row['ID'];
 
 	$imgFile = $_FILES['photo']['name'];
 		$tmp_dir = $_FILES['photo']['tmp_name'];
@@ -69,7 +70,7 @@ if(isset($_POST['btn-post']))
 					// if no error occured, continue ....
 				if(!isset($errMSG))
 				{
-						if($farmer_post->farmer_post($title,$price,$phone,$location,$description,$cartegory,$userpic,$email,$piced))
+						if($farmer_post->farmer_post($title,$price,$phone,$location,$description,$cartegory,$userpic,$email,$piced,$userID))
 					{
 						$msg1 = "<div class='alert alert-success col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2' data-dismiss='alert'>
 									<button class='close ' data-dismiss='alert'>&times;</button>
@@ -174,7 +175,8 @@ if($farmer_post->is_logged_in()) {
            	<div class=" col-md-8 col-md-offset-2 row text-center">
            		<h2 class="title ">Farmer Posts</h2>
            		<p> Make your posts below</p>
-           	</div>
+           		<span class="h3">Manage your previous posts<a href="manage_posts" class="btn btn-default">Here...</a></span>
+           	</div><br>
            	<div class="col-md-8 col-sm-10 col-md-offset-2 col-sm-offset-1">
            		<?php
 					if(isset($errMSG)){
@@ -253,14 +255,12 @@ if($farmer_post->is_logged_in()) {
     	
     </section>
 
-	<footer>
-			<div class="col-md-12">
-				<div class="col-md-6 col-md-offset-3 text-center">
-					<p>&copy; &nbsp;<?php echo date('Y'); ?> &nbsp;All Rights Reserved </p>
-				</div>
-				
-			</div>
-		</footer>
+	<?php 
+
+	//footer
+	include 'footer.php';
+
+	?>
 	</body>
 	
 		<script src="css/materialize/js/materialize.min.js"></script>
